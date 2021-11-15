@@ -1,56 +1,9 @@
 version: "3.3"
 services:
-  project_name-mongo:
-    image : mongo:4.4.3
-    container_name: project_name-mongo
-    ports:
-      - 127.0.0.1:27017:27017
-    environment:
-    - PUID=1000
-    - PGID=1000
-    volumes:
-    - ./database:/data/db
-    restart: unless-stopped
-
-  project_name-redis:
-    image : redis
-    container_name: project_name-redis
-    restart: unless-stopped
-    expose:
-      - "6379"
-    ports:
-      - 127.0.0.1:6379:6379
-    volumes:
-      - ./redis:/data
-
-  project_name-rabbitmq:
-    hostname: 'project_name-rabbitmq'
-    image: rabbitmq:3.5-management
-    container_name: 'project_name-rabbitmq'
-    expose:
-      - "5672"
-      - "15672"
-    ports:
-      - 127.0.0.1:5672:5672
-      - 127.0.0.1:15672:15672
-    volumes:
-      - ./rabbitmq/logs:/var/log/rabbitmq
-      - ./rabbitmq/data:/var/lib/rabbitmq
-
   project_name:
-    environment:
-      - REDIS_URL=redis://project_name-redis
-      - RABBITMQ_URL=amqp://project_name-rabbitmq
-      - DB_CONNECTION_STRING=mongodb://project_name-mongo/db_name
-    volumes:
-      - ./exports:/app/exports
     build:
       context: .
       dockerfile: Dockerfile
     working_dir: /app
-    depends_on:
-      - project_name-mongo
-      - project_name-redis
-      - project_name-rabbitmq
     restart: unless-stopped
     command: node dist/index.js

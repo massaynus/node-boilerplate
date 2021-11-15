@@ -1,0 +1,9 @@
+node_modules
+dist
+database
+exports
+redis
+rabbitmq
+package-lock.json
+.env
+.vscode

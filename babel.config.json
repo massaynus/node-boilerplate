@@ -1,0 +1,24 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "libraries": "./lib"
+        }
+      }
+    ],
+    "@babel/plugin-proposal-object-rest-spread",
+    "babel-plugin-import-graphql"
+  ]
+}

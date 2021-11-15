@@ -1,0 +1,40 @@
+{
+  "name": "project_name",
+  "version": "1.0.0",
+  "description": "",
+  "main": "source/index.js",
+  "scripts": {
+    "start": "npx babel-node source/index.js --insecure-http-parser",
+    "build": "npx babel ./source --out-dir ./dist --source-maps --copy-files --compact auto --no-comments --verbose --delete-dir-on-start",
+    "deploy": "npm run build && node dist/index.js"
+  },
+  "keywords": [],
+  "author": "massaynus",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.8.0",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link-http": "^1.5.17",
+    "cron": "^1.8.2",
+    "dotenv": "^10.0.0",
+    "graphql": "^15.5.1",
+    "graphql-tag": "^2.12.5",
+    "ioredis": "^4.27.8",
+    "lodash": "^4.17.21",
+    "mongoose": "^5.13.9",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
+    "@babel/preset-env": "^7.14.7",
+    "babel-plugin-import-graphql": "^2.8.1",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "2.3.2"
+  }
+}

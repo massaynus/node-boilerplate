@@ -8,3 +8,5 @@ export const REDIS_URL = process.env.REDIS_URL;
 
 export const GQL_ENDPOINT = process.env.GQL_ENDPOINT;
 export const GQL_AUTH_TOEKN = process.env.GQL_AUTH_TOEKN;
+
+export const SERVER_PORT = process.env.SERVER_PORT;

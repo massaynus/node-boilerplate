@@ -5,9 +5,14 @@ import Person from '../models/person'
  * @param {import("express").Request} req the request object
  * @param {import("express").Response} res the response object
  */
-export async function getAll(req, res) {
-    const list = await Person.find({}).exec()
-    res.json(list)
+export async function getAll(req, res, next) {
+    try {
+        const list = await Person.find({}).exec()
+        res.json(list)
+        next()
+    } catch (err) {
+        next(req, res, null, err)
+    }
 }
 
 /**
@@ -15,10 +20,15 @@ export async function getAll(req, res) {
  * @param {import("express").Request} req the request object
  * @param {import("express").Response} res the response object
  */
-export async function getOne(req, res) {
-    const { id } = req.params
-    const maGuy = await Person.find({ _id: id }).exec()
-    res.json(maGuy)
+export async function getOne(req, res, next) {
+    try {
+        const { id } = req.params
+        const maGuy = await Person.find({ _id: id }, { _id: 0, __v: 0 }).exec()
+        res.json(maGuy)
+        next()
+    } catch (err) {
+        next(req, res, null, err)
+    }
 }
 
 /**
@@ -26,11 +36,16 @@ export async function getOne(req, res) {
  * @param {import("express").Request} req the request object
  * @param {import("express").Response} res the response object
  */
-export async function createOne(req, res) {
-    const person = req.body
-    const result = await Person.create(person)
+export async function createOne(req, res, next) {
+    try {
+        const person = req.body
+        const result = await Person.create(person)
 
-    res.status(201).json(result)
+        res.status(201).json(result)
+        next()
+    } catch (err) {
+        next(req, res, null, err)
+    }
 }
 
 

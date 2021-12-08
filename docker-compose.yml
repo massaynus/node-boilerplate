@@ -46,6 +46,10 @@ services:
       - DB_CONNECTION_STRING=mongodb://mongo/db_name
     volumes:
       - ./exports:/app/exports
+    expose:
+      - "${SERVER_PORT}"
+    ports:
+      - "127.0.0.1:${SERVER_EXPOSED_PORT}:${SERVER_PORT}"
     build:
       context: .
       dockerfile: Dockerfile

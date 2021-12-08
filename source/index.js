@@ -9,6 +9,7 @@ const startUpTime = new Date()
 
 const app = express()
 app.use(cors())
+app.use(express.json())
 
 app.use('/api/v1', API_ROUTER_V1)
 app.get('/heartbeat', (_, res) => {

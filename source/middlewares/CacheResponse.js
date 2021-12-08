@@ -8,7 +8,7 @@ import { SERVER_REDIS_CACHE_TTL } from '../lib/config'
  */
 export default async function (req, res, next) {
     const url = new URL(req.url, `http://${req.headers.host}`);
-    const KEY = `${url.pathname}${url.search}`
+    const KEY = `REPONSE_KEY:${url.pathname}${url.search}`
     const json = JSON.stringify(res.locals.body)
 
     await ioclient.setex(KEY, SERVER_REDIS_CACHE_TTL, json)

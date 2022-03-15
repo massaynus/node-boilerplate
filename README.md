@@ -1,5 +1,7 @@
 # NodeJS boilerplate
 
+[Find out more](https://github.com/massaynus/node-boilerplate)
+
 ## What is this?
 
 This template will make it easy to start writing anything by configuring all the necessary infra out of the box.

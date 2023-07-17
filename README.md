@@ -1,5 +1,11 @@
 # NodeJS boilerplate
 
+Made by @massaynus
+
+there are branches in each one a different setup for all your needs
+
+please checkout the repo at: <https://github.com/massaynus/node-boilerplate>
+
 ## What is this?
 
 This template will make it easy to start writing anything by configuring all the necessary infra out of the box.
